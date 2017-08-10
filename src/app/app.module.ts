@@ -3,12 +3,12 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {SimpleAnimationComponent} from "./simple-animations/simpleAnimationComponent";
+import { SimpleAnimationComponent} from "./simple-animations/simpleAnimationComponent";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SimpleAnimationComponent
+    SimpleAnimationComponent,
   ],
   imports: [
     BrowserModule,
