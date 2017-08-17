@@ -4,15 +4,19 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SimpleAnimationComponent} from "./simple-animations/simpleAnimationComponent";
+import {AnimateElementComponent} from "./animateElementsComponent/animate.element";
+import {AnimateModule} from "./animateElementsComponent/animate.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleAnimationComponent,
+    //AnimateElementComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    //BrowserAnimationsModule,
+    AnimateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
