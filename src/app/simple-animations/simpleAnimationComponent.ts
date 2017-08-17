@@ -30,34 +30,39 @@ export const NumberEnteredState =
 @Component({
   selector: 'simple-animation',
   template: `
-    <div class="col col-md-8 col-md-offset-2">
-      <div [@clickedState]="states[0]" (click)="onClick($event)" (mousedown)="onClick($event)"
-           (mouseenter)="onClick($event)" (mouseout)="onClick($event)"  
-           (@clickedState.start)="onClickedAnimationStarted($event)"  
-           (@clickedState.done)="onClickedAnimationDone($event)"  >
+    <div class="container-fluid">
+    <div class="row" >
+      <div class="col col-md-6 col-md-offset-2">
+        <div [@clickedState]="states[0]" (click)="onClick($event)" (mousedown)="onClick($event)"
+             (mouseenter)="onClick($event)" (mouseout)="onClick($event)"
+             (@clickedState.start)="onClickedAnimationStarted($event)"
+             (@clickedState.done)="onClickedAnimationDone($event)">
+        </div>
+        <br/> <br/>
+        <p class="simple" [@clickedState]="states[2]"> text </p>
       </div>
-      <br/> <br/>
-      <p class="simple" [@clickedState]="states[2]"> text </p>
+      <div col col-md-4>
+        <label>started:{{justStartedAnimation | async}} </label>
+        <!--<label> done: {{ (justDoneAnimation | async) }} </label>-->
+      </div>
     </div>
-    <div col col-md-2>
-      <label>started:{{justStartedAnimation | async}} </label>
-      <!--<label> done: {{ (justDoneAnimation | async) }} </label>-->
+    <div class="row" >
+      <div class="col col-md-8 col-md-offset-4">
+        <input type="number" (input)="numberEntered= $event.target.value" min="-100"/>
+        <br/>
+        <br/>
+        <span [@numberEnteredState]="numberEntered ==1 ?'selected':'unselected'">1</span>
+        <span [@numberEnteredState]="numberEntered ==2?'selected':'unselected'">2</span>
+        <span [@numberEnteredState]="numberEntered ==3?'selected':'unselected'">3</span>
+        <span [@numberEnteredState]="numberEntered ==4?'selected':'unselected'">4</span>
+        <span [@numberEnteredState]="numberEntered ==5?'selected':'unselected'">5</span>
+        <span [@numberEnteredState]="numberEntered ==6?'selected':'unselected'">6</span>
+        <span [@numberEnteredState]="numberEntered ==7?'selected':'unselected'">7</span>
+        <span [@numberEnteredState]="numberEntered ==8?'selected':'unselected'">8</span>
+        <span [@numberEnteredState]="numberEntered ==9?'selected':'unselected'">9</span>
+        <span [@numberEnteredState]="numberEntered ==0?'selected':'unselected'">0</span>
+      </div>
     </div>
-    
-    <div class="col col-md-8 col-md-offset-4">
-    <input type="number" (input)="numberEntered= $event.target.value" min="-100"/>
-    <br/>
-    <br/>
-    <span [@numberEnteredState]="numberEntered ==1 ?'selected':'unselected'">1</span>
-    <span [@numberEnteredState]="numberEntered ==2?'selected':'unselected'">2</span>
-    <span [@numberEnteredState]="numberEntered ==3?'selected':'unselected'">3</span>
-    <span [@numberEnteredState]="numberEntered ==4?'selected':'unselected'">4</span>
-    <span [@numberEnteredState]="numberEntered ==5?'selected':'unselected'">5</span>
-    <span [@numberEnteredState]="numberEntered ==6?'selected':'unselected'">6</span>
-    <span [@numberEnteredState]="numberEntered ==7?'selected':'unselected'">7</span>
-    <span [@numberEnteredState]="numberEntered ==8?'selected':'unselected'">8</span>
-    <span [@numberEnteredState]="numberEntered ==9?'selected':'unselected'">9</span>
-    <span [@numberEnteredState]="numberEntered ==0?'selected':'unselected'">0</span>
     </div>
   `,
 
@@ -79,9 +84,9 @@ export const NumberEnteredState =
 export class SimpleAnimationComponent {
   // private clickInfo:boolean=true;
   private states: string[] = ['default', 'clicked', 'mousedown'];
-  private numberEntered: number =0;
-  private justStartedAnimation:BehaviorSubject<string> = new BehaviorSubject("");
-  private justDoneAnimation:BehaviorSubject<string> = new BehaviorSubject("");
+  private numberEntered: number = 0;
+  private justStartedAnimation: BehaviorSubject<string> = new BehaviorSubject("");
+  private justDoneAnimation: BehaviorSubject<string> = new BehaviorSubject("");
 
 
   onClick($evennt: any): void {
@@ -94,14 +99,14 @@ export class SimpleAnimationComponent {
     this.states[2] = first;
   }
 
-  onClickedAnimationStarted(event:AnimationEvent):void{
-      this.justStartedAnimation.next(  event.triggerName + " from :"+event.fromState +" to :" + event.toState);
-      //this.justStartedAnimation.subscribe(data=> console.log(data))
+  onClickedAnimationStarted(event: AnimationEvent): void {
+    this.justStartedAnimation.next(event.triggerName + " from :" + event.fromState + " to :" + event.toState);
+    //this.justStartedAnimation.subscribe(data=> console.log(data))
   }
 
 
-  onClickedAnimationDone(event:AnimationEvent):void{
-    this.justDoneAnimation.next(event.triggerName + " from :"+event.fromState +" to :" + event.toState);
+  onClickedAnimationDone(event: AnimationEvent): void {
+    this.justDoneAnimation.next(event.triggerName + " from :" + event.fromState + " to :" + event.toState);
     //this.justDoneAnimation.subscribe(data=> console.log(data))
   }
 }
