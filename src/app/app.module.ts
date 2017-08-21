@@ -6,17 +6,20 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SimpleAnimationComponent} from "./simple-animations/simpleAnimationComponent";
 import {AnimateElementComponent} from "./animateElementsComponent/animate.element";
 import {AnimateModule} from "./animateElementsComponent/animate.module";
+import {DynamicModule} from "./dynamicDimension/dynamic.module";
+import {ListModule} from "./listAnimation/list.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleAnimationComponent,
+
     //AnimateElementComponent
   ],
   imports: [
     BrowserModule,
     //BrowserAnimationsModule,
-    AnimateModule
+    AnimateModule, DynamicModule,ListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
