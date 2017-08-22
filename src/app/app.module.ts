@@ -8,6 +8,7 @@ import {AnimateElementComponent} from "./animateElementsComponent/animate.elemen
 import {AnimateModule} from "./animateElementsComponent/animate.module";
 import {DynamicModule} from "./dynamicDimension/dynamic.module";
 import {ListModule} from "./listAnimation/list.module";
+import {AnimateGroupModule} from "./animateGroup/animate.group.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {ListModule} from "./listAnimation/list.module";
   imports: [
     BrowserModule,
     //BrowserAnimationsModule,
-    AnimateModule, DynamicModule,ListModule
+    AnimateModule, DynamicModule,ListModule, AnimateGroupModule
   ],
   providers: [],
   bootstrap: [AppComponent]
