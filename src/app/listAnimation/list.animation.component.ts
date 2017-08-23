@@ -4,7 +4,7 @@ import {ListAnimation} from "./list.animation";
 @Component({
   selector: 'list',
   template: `
-    <button (click)="addList()"  > 
+    <button (click)="addList()"  class="btn-success"> 
       add List</button>
     <div *ngFor=" let entry of result; let i=index"  @listAnimationTrigger (click)="rmList(i)" >{{entry}}</div>
   `,

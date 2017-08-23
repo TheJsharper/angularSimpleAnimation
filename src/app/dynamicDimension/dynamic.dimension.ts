@@ -5,8 +5,8 @@ import {DynamicDimensionAnimation} from "./dynamic.dimension.animation";
   selector: 'dynamic-element',
   template: `
 
-    <button (click)="width = width -50  ">Shrink</button>
-    <button (click)="animate =!animate ">Animate me</button>
+    <button (click)="width = width -50  " class="btn-success">Shrink</button>
+    <button (click)="animate =!animate " class="btn-success">Animate me</button>
     <p [ngStyle]="{'width.px': width}" [@dynamicAnimationState]="animate?'animated':'notAnimated'"> shrink me!</p>
 
 

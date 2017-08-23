@@ -4,7 +4,7 @@ import {Animations} from "./animations.element";
 @Component({
   selector:'animate-element',
   template:`
-  <button (click)="shown= !shown" > toggle element</button>
+  <button (click)="shown= !shown" class="btn-success" > toggle element</button>
       <p *ngIf="shown" [@showState]="shown? 'shown':'notShown'" class="text"> some text</p>
   
   `
